@@ -53,7 +53,7 @@
  * ---------------------------------------------------------------------------------------------------------------------
  */
 
-$module->version  = 2011061701;  // The cuxzvczxcvzxcvzxvcrrent module version (Date: YYYYMMDDXX)
-$module->cron     = 0;           // Period for cron to check this module (secs)
+$module->version  = 2011061701;  //The cuxzvczxcvzxcvzxvcrrent module version (Date: YYYYMMDDXX)
+$module->cron     = 0;           //Period for cron to check this module (secs)
 
 ?>
