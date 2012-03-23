@@ -98,8 +98,8 @@ class restore_presenter_activity_task extends restore_activity_task {
         $rules[] = new restore_decode_rule('PRESENTEREDIT', '/mod/presenter/edit.php?id=$1', 'course_module');
         $rules[] = new restore_decode_rule('PRESENTERVIEWBYID', '/mod/presenter/view.php?id=$1', 'course_module');
         $rules[] = new restore_decode_rule('PRESENTERINDEX', '/mod/presenter/index.php?id=$1', 'course');
-        $rules[] = new restore_decode_rule('PRESENTERVIEWCHAPTER', '/mod/presenter/view.php?id=$1&chapterid=$2', 'course_module');
-        $rules[] = new restore_decode_rule('PRESENTERVIEWCHAPTEROPEN', '/mod/presenter/view.php?open=$1&id=$2&chapterid=$3', 'course_module');
+        $rules[] = new restore_decode_rule('PRESENTERVIEWCHAPTER', '/mod/presenter/view.php?id=$1&chapterid=$2', array('course_module', 'chapter_page'));
+        $rules[] = new restore_decode_rule('PRESENTERVIEWCHAPTEROPEN', '/mod/presenter/view.php?open=$1&id=$2&chapterid=$3', array('chapter_open', 'course_module', 'chapter_page'));
 
         return $rules;
 
