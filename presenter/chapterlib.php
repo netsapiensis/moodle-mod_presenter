@@ -137,5 +137,3 @@ function get_movie_id($url)
         return end(explode("/", $url));
     }
 }
-
-?>

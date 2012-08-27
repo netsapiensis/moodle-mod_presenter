@@ -472,5 +472,3 @@ function swap_array_values($array, $index1, $index2)
     $return[$index2] = $aux;
     return $return;
 }
-
-?>
