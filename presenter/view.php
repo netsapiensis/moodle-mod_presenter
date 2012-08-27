@@ -588,6 +588,10 @@ $player .= $playerScript;
 
 $slide = '<div style="line-height: 0;overflow: hidden; text-align: center; width: ' . $slideWidth . 'px;height: ' . $slideHeight . 'px">';
 
+//minus the mp3 player height
+if (!empty($chapter->audio_track)) {
+    $slideHeight -= 24;
+}
 if (!is_null($image)) {
 	$imgWidth = imagesx($image);
 	$imgHeight = imagesy($image);
@@ -700,7 +704,7 @@ $clear = '<div style="clear: both; float: none; height: 0px"></div>';
 
 if ($presenter->window == 1) {
 	echo '<div style="width: 100%; text-align: center;">';
-	echo '<div style="width: ' . $presentationWidth + 2 . 'px; margin: 0 auto; border: 1px solid #CCC;">';
+	echo '<div style="width: ' . ($presentationWidth + 2) . 'px; margin: 0 auto; border: 1px solid #CCC;">';
 }
 
 echo $col1 . $col2 . $clear . $summary;
