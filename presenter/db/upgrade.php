@@ -1,4 +1,5 @@
-<?php  
+<?php
+
 /*
  * ---------------------------------------------------------------------------------------------------------------------
  * This file is part of the Presenter Activity Module for Moodle
@@ -53,25 +54,33 @@
  * ---------------------------------------------------------------------------------------------------------------------
  */
 
-function xmldb_presenter_upgrade($oldversion = 0) {
-
+function xmldb_presenter_upgrade($oldversion = 0)
+{
     global $CFG, $THEME, $DB;
 
+    $db_man = $DB->get_manager();
+
     if ($oldversion > 2010112000 && $oldversion < 2010112401) {
-        $db_man = $DB->get_manager();
-        
+
         $table = new xmldb_table('presenter_chapters_users');
-        
+
         $old_field = new xmldb_field('username');
 
         if ($db_man->field_exists($table, $old_field)) {
             $old_field->set_attributes(XMLDB_TYPE_INTEGER, 11, null, XMLDB_NOTNULL, null, 0, 'presenter_id');
             $db_man->rename_field($table, $old_field, 'userid');
         }
-        
     }
-    
+
+    //change the 'window' field from the table, as it is a reserved word in PostgreSQL
+    if ($oldversion < 2012082702) {
+        $table = new xmldb_table('presenter');
+        
+        $old_field = new xmldb_field('window');
+        if ($db_man->field_exists($table, $old_field)) {
+            $old_field->set_attributes(XMLDB_TYPE_INTEGER, 1, null, XMLDB_NOTNULL, null, 0);
+            $db_man->rename_field($table, $old_field, 'new_window');
+        }
+    }
     return true;
 }
-
-?>

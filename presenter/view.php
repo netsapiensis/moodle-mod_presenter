@@ -77,13 +77,13 @@ if (!$presenter = presenter_get_presenter($cm->instance)) {
 	print_error("Course module is incorrect");
 }
 
-if ($presenter->window == 1 && $open == 0) : ?>
+if ($presenter->new_window == 1 && $open == 0) : ?>
     <script type="text/javascript" src="<?php echo $CFG->wwwroot ?>/mod/presenter/popup.js"></script>
 	<script type="text/javascript">
         if (!openURL('view.php?open=1&id=<?php echo $id ?>')) {
             alert('<?php echo get_string('alert_new_window', 'presenter')?>');
-            history.go(-1);
         }
+        history.go(-1);
 	</script>
 <?php endif;
 
@@ -172,13 +172,21 @@ if ($imageStr) {
 }
 
 $navigation = build_navigation('', $cm);
-if ($presenter->window != 1) {
+if ($presenter->new_window != 1) {
 
     $PAGE->set_title($course->shortname . ': ' . $presenter->name . ': ' . $chapter->chapter_name);
     $PAGE->set_heading($course->fullname);
     $PAGE->set_button($OUTPUT->update_module_button($cm->id, 'presenter'));
     echo $OUTPUT->header();
-}
+} else { ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title><?php echo $presenter->name ?></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<?php }
 
 $volume = $presenter->volume;
 if (isset($SESSION->playerVolume)) {
@@ -693,7 +701,7 @@ switch($chapter->layout) {
 		break;
 }
 
-if ($presenter->window != 1) {
+if ($presenter->new_window != 1) {
 	echo '<div class="box generalbox generalboxcontent boxaligncenter" style="width: ' . $presentationWidth . 'px; height: ' . ($presentationHeight + $summaryHeight) . 'px">';
 }
 
@@ -702,14 +710,14 @@ $col1 .= '</div>';
 $col2 .= '</div>';
 $clear = '<div style="clear: both; float: none; height: 0px"></div>';
 
-if ($presenter->window == 1) {
+if ($presenter->new_window == 1) {
 	echo '<div style="width: 100%; text-align: center;">';
 	echo '<div style="width: ' . ($presentationWidth + 2) . 'px; margin: 0 auto; border: 1px solid #CCC;">';
 }
 
 echo $col1 . $col2 . $clear . $summary;
 
-if ($presenter->window == 1) {
+if ($presenter->new_window == 1) {
 	echo '</div></div>';
 } else {
     echo '</div>';
@@ -726,8 +734,9 @@ if ($index > $number) {
 
 $s = '<script type="text/javascript">document.getElementById("aaaa").scrollTop = ' . $scrollTop . ';</script>';
 echo $s;
-if ($presenter->window != 1) {
+if ($presenter->new_window != 1) {
     echo $OUTPUT->footer();
-}
-
-?>
+} else { ?>
+</body>
+</html>
+<?php } ?>

@@ -202,8 +202,8 @@ class mod_presenter_mod_form extends moodleform_mod {
         $option = array();
         $option[0] = 'Same window';
         $option[1] = 'New window';
-        $mform->addElement('select', 'window', get_string('window', 'presenter'), $option);
-        $mform->setDefault('window', 0);
+        $mform->addElement('select', 'new_window', get_string('window', 'presenter'), $option);
+        $mform->setDefault('new_window', 0);
         
         $options = array();
         $options[0] = 'Default';
