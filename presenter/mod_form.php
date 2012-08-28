@@ -202,8 +202,8 @@ class mod_presenter_mod_form extends moodleform_mod {
         $option = array();
         $option[0] = 'Same window';
         $option[1] = 'New window';
-        $mform->addElement('select', 'window', get_string('window', 'presenter'), $option);
-        $mform->setDefault('window', 0);
+        $mform->addElement('select', 'new_window', get_string('window', 'presenter'), $option);
+        $mform->setDefault('new_window', 0);
         
         $options = array();
         $options[0] = 'Default';
@@ -252,82 +252,82 @@ class mod_presenter_mod_form extends moodleform_mod {
 
         $repeatarray = array();
 		
-        $repeatarray[] = &MoodleQuickForm::createElement('header', 'chapter', get_string('chapter', 'presenter').' {no}');
+        $repeatarray[] = $mform->createElement('header', 'chapter', get_string('chapter', 'presenter').' {no}');
         $theme = current_theme();
 
         $showThis = '<input class="showOnlyOneChapterCaller" type="image" src="'. $CFG->wwwroot . '/mod/presenter/pix/one.gif" style="float: right; margin-right: 17px;" title="Show only this chapter" />';
         $showAll = '<input class="showAllChaptersCaller" type="image" src="'. $CFG->wwwroot . '/mod/presenter/pix/all.gif" style="display: none; float: right; margin-right: 17px;" title="Show all chapters" />';
         
-        $repeatarray[] = &MoodleQuickForm::createElement('html', $showThis);
-        $repeatarray[] = &MoodleQuickForm::createElement('html', $showAll);
+        $repeatarray[] = $mform->createElement('html', $showThis);
+        $repeatarray[] = $mform->createElement('html', $showAll);
         
         $btn = '<div style="clear:both"></div><button class="deleteChapterCaller" type="button" title="'. get_string('remove', 'presenter') .'">' . '</button>';
-        $repeatarray[] = &MoodleQuickForm::createElement('html', $btn);
+        $repeatarray[] = $mform->createElement('html', $btn);
         
         $btn = '<div style="clear:both"></div><input value="move_up{no}" type="submit" class="moveUpCaller" name="chapter_move_up" title="' . get_string('move_up', 'presenter') . '" />';
-        $repeatarray[] = &MoodleQuickForm::createElement('html', $btn);
+        $repeatarray[] = $mform->createElement('html', $btn);
         
         $btn = '<div style="clear:both"></div><input value="move_down{no}" type="submit" class="moveDownCaller" name="chapter_move_down" title="' . get_string('move_down', 'presenter') . '">';
-        $repeatarray[] = &MoodleQuickForm::createElement('html', $btn);
+        $repeatarray[] = $mform->createElement('html', $btn);
         
-        $radio[] = &MoodleQuickForm::createElement('radio', 'layout', null,  '<img src="' . $CFG->wwwroot . '/mod/presenter/pix/layout1.gif" />', '1', array("class" => "radioBut", "id" => "id_radio"));
-        $radio[] = &MoodleQuickForm::createElement('radio', 'layout', null,  '<img src="' . $CFG->wwwroot . '/mod/presenter/pix/layout2.gif" />', '2', array("class" => "radioBut", "id" => "id_radio"));
-        $radio[] = &MoodleQuickForm::createElement('radio', 'layout', null,  '<img src="' . $CFG->wwwroot . '/mod/presenter/pix/layout3.gif" />', '3', array("class" => "radioBut", "id" => "id_radio"));
-        $radio[] = &MoodleQuickForm::createElement('radio', 'layout', null,  '<img src="' . $CFG->wwwroot . '/mod/presenter/pix/layout4.gif" />', '4', array("class" => "radioBut", "id" => "id_radio"));
-        $radio[] = &MoodleQuickForm::createElement('radio', 'layout', null,  '<img src="' . $CFG->wwwroot . '/mod/presenter/pix/layout5.gif" />', '5', array("class" => "radioBut", "id" => "id_radio"));
-        $radio[] = &MoodleQuickForm::createElement('radio', 'layout', null,  '<img src="' . $CFG->wwwroot . '/mod/presenter/pix/layout6.gif" />', '6', array("class" => "radioBut", "id" => "id_radio"));
+        $radio[] = $mform->createElement('radio', 'layout', null,  '<img src="' . $CFG->wwwroot . '/mod/presenter/pix/layout1.gif" />', '1', array("class" => "radioBut", "id" => "id_radio"));
+        $radio[] = $mform->createElement('radio', 'layout', null,  '<img src="' . $CFG->wwwroot . '/mod/presenter/pix/layout2.gif" />', '2', array("class" => "radioBut", "id" => "id_radio"));
+        $radio[] = $mform->createElement('radio', 'layout', null,  '<img src="' . $CFG->wwwroot . '/mod/presenter/pix/layout3.gif" />', '3', array("class" => "radioBut", "id" => "id_radio"));
+        $radio[] = $mform->createElement('radio', 'layout', null,  '<img src="' . $CFG->wwwroot . '/mod/presenter/pix/layout4.gif" />', '4', array("class" => "radioBut", "id" => "id_radio"));
+        $radio[] = $mform->createElement('radio', 'layout', null,  '<img src="' . $CFG->wwwroot . '/mod/presenter/pix/layout5.gif" />', '5', array("class" => "radioBut", "id" => "id_radio"));
+        $radio[] = $mform->createElement('radio', 'layout', null,  '<img src="' . $CFG->wwwroot . '/mod/presenter/pix/layout6.gif" />', '6', array("class" => "radioBut", "id" => "id_radio"));
 
         $html = '<div class="radio_buttons">';
-        $repeatarray[] = &MoodleQuickForm::createElement('html', $html);
-        $repeatarray[] = &MoodleQuickForm::createElement('group', 'layout', '', $radio, '');
+        $repeatarray[] = $mform->createElement('html', $html);
+        $repeatarray[] = $mform->createElement('group', 'layout', '', $radio, '');
         $html = '</div>';
         
-        $repeatarray[] = &MoodleQuickForm::createElement('html', $html);
-        $repeatarray[] = &MoodleQuickForm::createElement('hidden', 'deleted', 'false', array('class' => 'delete interchange'));
-        $repeatarray[] = &MoodleQuickForm::createElement('hidden', 'showOnly', 'false', array('class' => 'showOnlyThis interchange'));
+        $repeatarray[] = $mform->createElement('html', $html);
+        $repeatarray[] = $mform->createElement('hidden', 'deleted', 'false', array('class' => 'delete interchange'));
+        $repeatarray[] = $mform->createElement('hidden', 'showOnly', 'false', array('class' => 'showOnlyThis interchange'));
         
-        $repeatarray[] = &MoodleQuickForm::createElement('text', 'chapter_name', get_string('chapter_name', 'presenter'), array('class' => "names interchange"));
+        $repeatarray[] = $mform->createElement('text', 'chapter_name', get_string('chapter_name', 'presenter'), array('class' => "names interchange"));
 
         $htmlExplain = '<div class="fitem"><div class="fitemtitle"><label>&nbsp;</label></div><div style="color: #008000; font-size: 90%;" class="felement ftext">' . get_string('allowed_files', 'presenter') . ': <b>*.flv</b></div></div>';
-        $repeatarray[] = &MoodleQuickForm::createElement('html', $htmlExplain);
+        $repeatarray[] = $mform->createElement('html', $htmlExplain);
         $opt = array();
         $opt['subdirs'] = 0;
         $opt['maxbytes'] = $this->course->maxbytes;
         $opt['maxfiles'] = 1;
         $opt['accepted_types'] = array('video');
-        $repeatarray[] = &MoodleQuickForm::createElement('filemanager', 'video_file', get_string('video_file', 'presenter'), null, $opt);
+        $repeatarray[] = $mform->createElement('filemanager', 'video_file', get_string('video_file', 'presenter'), null, $opt);
         
         $htmlExplain = '<div class="fitem"><div class="fitemtitle"><label>&nbsp;</label></div><div style="color: #008000; font-size: 90%;" class="felement ftext">' . get_string('explain_video_link', 'presenter') . '</div></div>';
-        $repeatarray[] = &MoodleQuickForm::createElement('html', $htmlExplain);
-        $repeatarray[] = &MoodleQuickForm::createElement('text', 'video_link', get_string('or', 'presenter') . get_string('video_link', 'presenter'), array('class' => "interchange"));
+        $repeatarray[] = $mform->createElement('html', $htmlExplain);
+        $repeatarray[] = $mform->createElement('text', 'video_link', get_string('or', 'presenter') . get_string('video_link', 'presenter'), array('class' => "interchange"));
         
-        $repeatarray[] = &MoodleQuickForm::createElement('text', 'video_start', get_string('video_start', 'presenter'), array('value' => '0', 'class' => "interchange"));
+        $repeatarray[] = $mform->createElement('text', 'video_start', get_string('video_start', 'presenter'), array('value' => '0', 'class' => "interchange"));
         
-        $repeatarray[] = &MoodleQuickForm::createElement('text', 'video_end', get_string('video_end', 'presenter'), array('value' => '0', 'class' => "interchange"));
+        $repeatarray[] = $mform->createElement('text', 'video_end', get_string('video_end', 'presenter'), array('value' => '0', 'class' => "interchange"));
 
         $htmlExplain = '<div class="fitem"><div class="fitemtitle"><label>&nbsp;</label></div><div style="color: #008000; font-size: 90%;" class="felement ftext">' . get_string('allowed_files', 'presenter') . ': <b>*.mp3</b></div></div>';
-        $repeatarray[] = &MoodleQuickForm::createElement('html', $htmlExplain);
+        $repeatarray[] = $mform->createElement('html', $htmlExplain);
         
         $opt = array();
         $opt['subdirs'] = 0;
         $opt['maxbytes'] = $this->course->maxbytes;
         $opt['maxfiles'] = 1;
         $opt['accepted_types'] = array('*.mp3');
-        $repeatarray[] = &MoodleQuickForm::createElement('filemanager', 'audio_track', get_string('audio_track', 'presenter'), null, $opt);
+        $repeatarray[] = $mform->createElement('filemanager', 'audio_track', get_string('audio_track', 'presenter'), null, $opt);
         
-        $repeatarray[] = &MoodleQuickForm::createElement('hidden', 'audio_start', get_string('audio_start', 'presenter'), array('value' => '0'), array('class' => "interchange"));
+        $repeatarray[] = $mform->createElement('hidden', 'audio_start', get_string('audio_start', 'presenter'), array('value' => '0'), array('class' => "interchange"));
         
-        $repeatarray[] = &MoodleQuickForm::createElement('text', 'audio_end', get_string('audio_end', 'presenter'), array('value' => '0', 'class' => "interchange"));
+        $repeatarray[] = $mform->createElement('text', 'audio_end', get_string('audio_end', 'presenter'), array('value' => '0', 'class' => "interchange"));
 
         $htmlExplain = '<div class="fitem"><div class="fitemtitle"><label>&nbsp;</label></div><div style="color: #008000; font-size: 90%;" class="felement ftext">' . get_string('allowed_files', 'presenter') . ': <b>*.png, *.gif, *.jpg, *.jpeg</b></div></div>';
-        $repeatarray[] = &MoodleQuickForm::createElement('html', $htmlExplain);
+        $repeatarray[] = $mform->createElement('html', $htmlExplain);
         
         $opt = array();
         $opt['subdirs'] = 0;
         $opt['maxbytes'] = $this->course->maxbytes;
         $opt['maxfiles'] = 1;
         $opt['accepted_types'] = array('image');
-        $repeatarray[] = &MoodleQuickForm::createElement('filemanager', 'slide_image', get_string('slide_image', 'presenter'), null, $opt);
+        $repeatarray[] = $mform->createElement('filemanager', 'slide_image', get_string('slide_image', 'presenter'), null, $opt);
         
         $repeatarray[] = $mform->createElement('htmleditor', 'summary', get_string('summary', 'presenter'), array(
 		    'canUseHtmlEditor'=>'detect',
@@ -338,7 +338,7 @@ class mod_presenter_mod_form extends moodleform_mod {
 		    'course'=> 0,
 		));
         
-        $repeatarray[] = &MoodleQuickForm::createElement('hidden', 'order_id', $repeatno, array('class' => 'order_id interchange'));
+        $repeatarray[] = $mform->createElement('hidden', 'order_id', $repeatno, array('class' => 'order_id interchange'));
         
         
         $repeateloptions = array();
@@ -472,5 +472,3 @@ class mod_presenter_mod_form extends moodleform_mod {
     }
     
 }
-?>
-

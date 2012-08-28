@@ -16,9 +16,9 @@
         <FIELD NAME="player_width1" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="presentation_height2" NEXT="player_height1"/>
         <FIELD NAME="player_height1" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="player_width1" NEXT="player_width2"/>
         <FIELD NAME="player_width2" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="player_height1" NEXT="player_height2"/>
-        <FIELD NAME="player_height2" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="player_width2" NEXT="window"/>
-        <FIELD NAME="window" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" PREVIOUS="player_height2" NEXT="player_skin"/>
-        <FIELD NAME="player_skin" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" PREVIOUS="window" NEXT="control_bar"/>
+        <FIELD NAME="player_height2" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="player_width2" NEXT="new_window"/>
+        <FIELD NAME="new_window" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" PREVIOUS="player_height2" NEXT="player_skin"/>
+        <FIELD NAME="player_skin" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" PREVIOUS="new_window" NEXT="control_bar"/>
         <FIELD NAME="control_bar" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" PREVIOUS="player_skin" NEXT="player_streching"/>
         <FIELD NAME="player_streching" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" PREVIOUS="control_bar" NEXT="volume"/>
         <FIELD NAME="volume" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" DEFAULT="0" SEQUENCE="false" PREVIOUS="player_streching" NEXT="buffer_length"/>

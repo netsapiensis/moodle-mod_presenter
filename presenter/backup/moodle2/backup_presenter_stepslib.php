@@ -65,7 +65,7 @@ class backup_presenter_activity_structure_step extends backup_activity_structure
         $presenter = new backup_nested_element('presenter', array('id'), array(
             'course', 'name', 'nr_chapters', 'presentation_width1', 'presentation_height1', 'presentation_width2',
             'presentation_height2', 'player_width1', 'player_height1', 'player_width2', 'player_height2',
-            'window', 'player_skin', 'control_bar', 'player_streching', 'volume', 'buffer_length', 'slide_streching',
+            'new_window', 'player_skin', 'control_bar', 'player_streching', 'volume', 'buffer_length', 'slide_streching',
             'summary_height', 'export_file'
         ));
 

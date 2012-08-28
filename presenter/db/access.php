@@ -54,27 +54,15 @@
  */
 
 $capabilities = array(
+    'mod/presenter:addinstance' => array(
+        'riskbitmask' => RISK_XSS,
 
-//    'mod/presenter:edit' => array(
-//
-//        'riskbitmask' => RISK_XSS,
-//
-//        'captype' => 'write',
-//        'contextlevel' => CONTEXT_MODULE,
-//        'legacy' => array(
-//            'editingteacher' => CAP_ALLOW,
-//            'admin' => CAP_ALLOW
-//        )
-//    ),
-//
-//    'mod/presenter:manage' => array(
-//
-//        'captype' => 'write',
-//        'contextlevel' => CONTEXT_MODULE,
-//        'legacy' => array(
-//            'teacher' => CAP_ALLOW,
-//            'editingteacher' => CAP_ALLOW,
-//            'admin' => CAP_ALLOW
-//        )
-//    )
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_COURSE,
+        'archetypes' => array(
+            'editingteacher' => CAP_ALLOW,
+            'manager' => CAP_ALLOW
+        ),
+        'clonepermissionsfrom' => 'moodle/course:manageactivities'
+    ),
 );
