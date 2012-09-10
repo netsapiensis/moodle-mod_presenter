@@ -107,9 +107,9 @@ if (count($done) == 0) {
 }
 
 $xml_location = $temppathname . 'Presenter/presenter.xml';
-$video_folder = $temppathname . 'video/';
-$audio_folder = $temppathname . 'audio/';
-$image_folder = $temppathname . 'image/';
+$video_folder = $temppathname . 'Presenter/video/';
+$audio_folder = $temppathname . 'Presenter/audio/';
+$image_folder = $temppathname . 'Presenter/image/';
 
 $old_version = false;
 
@@ -183,6 +183,7 @@ if (!is_array($xml['root']['#']['presenter'][0]['#'])) {
     $fs = get_file_storage();
     $chapters = $xml['root']['#']['presenter'][0]['#']['chapters'][0]['#']['chapter'];
     foreach ($chapters as $i => $chapter_array) {
+        
         $chapter = new stdClass();
         foreach ($chapter_array['#'] as $field => $val) {
             $chapter->{$field} = $val[0]['#'];
@@ -195,6 +196,7 @@ if (!is_array($xml['root']['#']['presenter'][0]['#'])) {
             $msg = get_string('cannot_add_chapter', 'presenter');
             frame_error($msg . ": " . $chapter->chapter_name);
         }
+        
         $real_video_folder = $video_folder;
         if ($old_version) {
             if (!empty($chapter->video_link) && is_file("{$video_folder}{$chapter->video_link}")) {
@@ -232,7 +234,6 @@ if (!is_array($xml['root']['#']['presenter'][0]['#'])) {
         }
         $real_audio_folder = $audio_folder;
         if (!empty($chapter->audio_track) && is_file("{$audio_folder}{$chapter->audio_track}")) {
-
             //old version, if any subdirectories present
             if ($old_version) {
                 $nameparts = explode("/", $chapter->audio_track);
