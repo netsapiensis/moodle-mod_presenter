@@ -3,7 +3,7 @@
  * ---------------------------------------------------------------------------------------------------------------------
  * This file is part of the Presenter Activity Module for Moodle
  *
- * The Presenter Activity Module for Moodle software package is Copyright © 2008 onwards NetSapiensis AB and is provided
+ * The Presenter Activity Module for Moodle software package is Copyright ï¿½ 2008 onwards NetSapiensis AB and is provided
  * under the terms of the GNU GENERAL PUBLIC LICENSE Version 3 (GPL). This program is free software: you can
  * redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software
  * Foundation, either version 3 of the License, or (at your option) any later version.
@@ -147,4 +147,4 @@ $string['no_course'] = 'No course id specified';
 $string['no_presenter'] = 'No module id specified';
 $string['cannot_export'] = 'Cannot save export file';
 $string['pluginadministration'] = "Presenter administration";
-?>
+$string['presenter:addinstance'] = 'Add a new Presenter';
